@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class basicCalc extends AppCompatActivity {
-    private String aktualneStan ="";
+    private String aktualneStan ="0";
     private double aktualneWynik = 0;
     private double lastNumb = 0;
     private double actNumb =0;
@@ -70,13 +70,11 @@ public class basicCalc extends AppCompatActivity {
                 if(aktualneStan != "0" && aktualneStan.length() >1){
                     aktualneStan = aktualneStan.substring(0,aktualneStan.length()-1);
                 } else {
-                    aktualneStan = "0";
-                    aktualneWynik = 0;
+                    clrCalc();
                 }
                 break;
             case R.id.bcl:  //przycisk C
-                aktualneWynik = 0;
-                aktualneStan = "0";
+                clrCalc();
                 break;
                 default:
                     aktualneStan = "ERROR, USE C button";
@@ -88,6 +86,7 @@ public class basicCalc extends AppCompatActivity {
         actNumb = Double.parseDouble(aktualneStan);
         switch(aktDzialanie){     //odpalamy ostatnie dzialanie
         case brak:
+            aktualneWynik +=actNumb;
             break;
         case dodawanie:
             aktualneWynik += actNumb;
@@ -100,15 +99,19 @@ public class basicCalc extends AppCompatActivity {
         case mnozenie:
             if(lastDzialanie == dzialania.dodawanie){
                 aktualneWynik += (lastNumb * actNumb);
-            }else{
+            }else if (lastDzialanie == dzialania.odejmowanie){
                 aktualneWynik -= (lastNumb * actNumb);
+            }else if(lastDzialanie == dzialania.brak){
+                aktualneWynik = (lastNumb * actNumb);
             }
             break;
         case dzielenie:
             if(lastDzialanie == dzialania.dodawanie){
                 aktualneWynik += (lastNumb / actNumb);
-            }else{
+            }else if(lastDzialanie == dzialania.odejmowanie){
                 aktualneWynik -= (lastNumb / actNumb);
+            }else if(lastDzialanie == dzialania.brak){
+                aktualneWynik = (lastNumb / actNumb);
             }
             break;
         default:
@@ -138,5 +141,13 @@ public class basicCalc extends AppCompatActivity {
         }
         aktualneStan = "0";
         lastNumb = actNumb;
+    }
+    public void clrCalc(){
+        aktualneWynik = 0;
+        aktualneStan = "0";
+        aktDzialanie = dzialania.brak;
+        lastDzialanie = dzialania.brak;
+        actNumb = 0;
+        lastNumb = 0;
     }
 }
