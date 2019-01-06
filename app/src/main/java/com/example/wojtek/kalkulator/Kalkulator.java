@@ -26,6 +26,8 @@ public class Kalkulator extends AppCompatActivity {
         startActivity(intent);
     }
     public void advCalc(View view){
+        Intent intent = new Intent(this,advCalc.class);
+        startActivity(intent);
 
     }
 }
