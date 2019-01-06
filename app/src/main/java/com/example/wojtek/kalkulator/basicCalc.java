@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import static com.example.wojtek.kalkulator.basicCalc.dzialania.dzielenie;
+
 public class basicCalc extends AppCompatActivity {
     private String aktualneStan ="0";
     private double aktualneWynik = 0;
@@ -97,22 +99,12 @@ public class basicCalc extends AppCompatActivity {
             lastDzialanie = dzialania.odejmowanie;
             break;
         case mnozenie:
-            if(lastDzialanie == dzialania.dodawanie){
-                aktualneWynik += (lastNumb * actNumb);
-            }else if (lastDzialanie == dzialania.odejmowanie){
-                aktualneWynik -= (lastNumb * actNumb);
-            }else if(lastDzialanie == dzialania.brak){
-                aktualneWynik = (lastNumb * actNumb);
-            }
+            aktualneWynik *=actNumb;
+            lastDzialanie = dzialania.mnozenie;
             break;
         case dzielenie:
-            if(lastDzialanie == dzialania.dodawanie){
-                aktualneWynik += (lastNumb / actNumb);
-            }else if(lastDzialanie == dzialania.odejmowanie){
-                aktualneWynik -= (lastNumb / actNumb);
-            }else if(lastDzialanie == dzialania.brak){
-                aktualneWynik = (lastNumb / actNumb);
-            }
+            aktualneWynik /= actNumb;
+            lastDzialanie = dzialania.dzielenie;
             break;
         default:
             aktualneStan = "ERROR, USE C button";
@@ -134,6 +126,7 @@ public class basicCalc extends AppCompatActivity {
             case R.id.brow:
                 aktualneStan = String.valueOf(aktualneWynik);
                 updateScreen();
+                aktDzialanie = dzialania.brak;
                 break;
             default:
                 aktualneStan = "ERROR, USE C button";
