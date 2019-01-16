@@ -17,10 +17,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".oMnieAct" />
-        <activity android:name=".basicCalc" />
+        <activity android:name=".basicCalc"
+            android:label="@string/tytul"
+            android:configChanges="orientation"/>
         <activity
             android:name=".advCalc"
-            android:label="@string/title_activity_adv_calc"
+            android:label="@string/tytul"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
