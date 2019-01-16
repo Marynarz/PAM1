@@ -18,8 +18,7 @@
         </activity>
         <activity android:name=".oMnieAct" />
         <activity android:name=".basicCalc"
-            android:label="@string/tytul"
-            android:configChanges="orientation"/>
+            android:label="@string/tytul"/>
         <activity
             android:name=".advCalc"
             android:label="@string/tytul"
