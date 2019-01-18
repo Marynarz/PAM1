@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class advCalc extends AppCompatActivity {
-    private String aktualneStan = "";
+    private String aktualneStan = "0";
     private double aktualneWynik = 0;
     public enum dzialania{
         brak,
@@ -32,6 +32,30 @@ public class advCalc extends AppCompatActivity {
             setContentView(R.layout.activity_adv_calc);
         else
             setContentView(R.layout.activity_basic_calc);
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        aktualneStan = savedInstanceState.getString("AKTUALNESTAN");
+        aktualneWynik = savedInstanceState.getDouble("AKTUALNEWYNIK");
+        aktDzialanie = (dzialania) savedInstanceState.getSerializable("AKTDZIALANIE");
+        lastDzialanie = (dzialania) savedInstanceState.getSerializable("LASTDZIALANIE");
+        actNumb = savedInstanceState.getDouble("ACTNUMB");
+        lastNumb = savedInstanceState.getDouble("LASTNUMB");
+        updateScreen();
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("AKTUALNESTAN",aktualneStan);
+        outState.putDouble("AKTUALNEWYNIK",aktualneWynik);
+        outState.putSerializable("AKTDZIALANIE",aktDzialanie);
+        outState.putSerializable("LASTDZIALANIE",lastDzialanie);
+        outState.putDouble("ACTNUMB",actNumb);
+        outState.putDouble("LASTNUMB",lastNumb);
+
     }
 
     private void updateScreen() {
@@ -138,7 +162,7 @@ public class advCalc extends AppCompatActivity {
         lastNumb = 0;
     }
     public void delMethod(View v){
-        if(((Button)v).getText().toString().toLowerCase() =="c"){
+        if(((Button)v).getText().toString().toLowerCase() !="del"){
             clcCalc();
         }
         else if(aktualneStan != "0" && aktualneStan.length() >1){
