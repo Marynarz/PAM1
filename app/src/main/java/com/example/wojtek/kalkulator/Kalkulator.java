@@ -22,12 +22,7 @@ public class Kalkulator extends AppCompatActivity {
         System.exit(0);
     }
     public void basicCalc(View view){
-        Intent intent = new Intent(this,basicCalc.class);
-        startActivity(intent);
-    }
-    public void advCalc(View view){
         Intent intent = new Intent(this,advCalc.class);
         startActivity(intent);
-
     }
 }
