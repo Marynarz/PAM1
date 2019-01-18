@@ -21,7 +21,8 @@
             android:id="@+id/bclr"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="C"/>
+            android:text="C"
+            android:onClick="clcCalc"/>
         <Button
             android:id="@+id/bcdziel"
             android:layout_height="wrap_content"
@@ -41,7 +42,8 @@
             android:id="@+id/btsin"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="sin"/>
+            android:text="sin"
+            android:onClick="singleOprts"/>
     </TableRow>
     //2rzad
     <TableRow
@@ -75,7 +77,8 @@
             android:id="@+id/btcos"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="cos"/>
+            android:text="cos"
+            android:onClick="singleOprts"/>
     </TableRow>
     //3rzad
     <TableRow
@@ -109,7 +112,8 @@
             android:id="@+id/bttan"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="tan"/>
+            android:text="tan"
+            android:onClick="singleOprts"/>
     </TableRow>
     //4rzad
     <TableRow
@@ -143,7 +147,8 @@
             android:id="@+id/btx2"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="x^2"/>
+            android:text="x^2"
+            android:onClick="singleOprts"/>
     </TableRow>
     //5rzad
     <TableRow
@@ -174,12 +179,14 @@
             android:id="@+id/btsqrt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="sqrt"/>
+            android:text="sqrt"
+            android:onClick="singleOprts"/>
         <Button
             android:id="@+id/btlog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="log"/>
+            android:text="log"
+            android:onClick="singleOprts"/>
     </TableRow>
 
 </LinearLayout>

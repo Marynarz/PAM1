@@ -23,12 +23,47 @@ public class advCalc extends AppCompatActivity {
         TextView ekran = (TextView) findViewById(R.id.Wyswietlacz);
         ekran.setText(this.aktualneStan);
     }
-    public void addNumbAdv(View view){
+
+    protected void addNumbAdv(View view){
         if(aktualneStan == "0"){
             aktualneStan = "";
         }
         aktualneStan += ((Button)view).getText().toString();
-        this.updateScreen();
+        updateScreen();
+    }
+
+    protected void singleOprts(View view){
+        Double actNumb = Double.parseDouble(aktualneStan);
+        switch(((Button)view).getText().toString().toLowerCase()){
+            case "sin":
+                aktualneWynik = Math.sin(actNumb);
+                break;
+            case "cos":
+                aktualneWynik = Math.cos(actNumb);
+                break;
+            case "tan":
+                aktualneWynik = Math.tan(actNumb);
+                break;
+            case "sqrt":
+                aktualneWynik = Math.sqrt(actNumb);
+                break;
+            case "log":
+                aktualneWynik = Math.log(actNumb);
+                break;
+            case "x^2":
+                aktualneWynik = Math.pow(actNumb,2);
+                break;
+            default:
+                aktualneStan = "ERR";
+                break;
+        }
+        aktualneStan = String.valueOf(aktualneWynik);
+        updateScreen();
+
+    }
+    protected void clcCalc(){
+        aktualneStan = "0";
+        aktualneWynik = 0;
     }
 }
 
