@@ -12,6 +12,17 @@ import android.widget.TextView;
 public class advCalc extends AppCompatActivity {
     private String aktualneStan = "";
     private double aktualneWynik = 0;
+    public enum dzialania{
+        brak,
+        dodawanie,
+        odejmowanie,
+        mnozenie,
+        dzielenie
+    };
+    private dzialania aktDzialanie = dzialania.brak;
+    private dzialania lastDzialanie = dzialania.brak;
+    private double actNumb = 0;
+    private double lastNumb = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +72,69 @@ public class advCalc extends AppCompatActivity {
         updateScreen();
 
     }
+
+    public void operacjeAdv(View view){
+        actNumb = Double.parseDouble(aktualneStan);
+        switch(aktDzialanie){     //odpalamy ostatnie dzialanie
+            case brak:
+                aktualneWynik +=actNumb;
+                break;
+            case dodawanie:
+                aktualneWynik += actNumb;
+                lastDzialanie = dzialania.dodawanie;
+                break;
+            case odejmowanie:
+                aktualneWynik -= actNumb;
+                lastDzialanie = dzialania.odejmowanie;
+                break;
+            case mnozenie:
+                aktualneWynik *=actNumb;
+                lastDzialanie = dzialania.mnozenie;
+                break;
+            case dzielenie:
+                aktualneWynik /= actNumb;
+                lastDzialanie = dzialania.dzielenie;
+                break;
+            default:
+                aktualneStan = "ERROR, USE C button";
+                break;
+        }
+        switch(((Button)view).getText().toString().toLowerCase()){
+            case "+":
+                aktDzialanie = dzialania.dodawanie;
+                break;
+            case "-":
+                aktDzialanie = dzialania.odejmowanie;
+                break;
+            case "*":
+                aktDzialanie = dzialania.mnozenie;
+                break;
+            case "/":
+                aktDzialanie = dzialania.dzielenie;
+                break;
+            case "=":
+                aktualneStan = String.valueOf(aktualneWynik);
+                updateScreen();
+                aktDzialanie = dzialania.brak;
+                break;
+            default:
+                aktualneStan = "ERROR, USE C button";
+                break;
+        }
+        aktualneStan = "0";
+        lastNumb = actNumb;
+    }
+
     protected void clcCalc(){
         aktualneStan = "0";
         aktualneWynik = 0;
+    }
+    public void delMethod(View v){
+        if(aktualneStan != "0" && aktualneStan.length() >1){
+            aktualneStan = aktualneStan.substring(0,aktualneStan.length()-1);
+        } else {
+            clcCalc();
+        }
     }
 }
 

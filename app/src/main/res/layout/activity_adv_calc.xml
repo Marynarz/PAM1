@@ -27,17 +27,20 @@
             android:id="@+id/bcdziel"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="\"/>
+            android:text="\"
+            android:onClick="operacjeAdv"/>
         <Button
             android:id="@+id/btmnoz"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="*"/>
+            android:text="*"
+            android:onClick="operacjeAdv"/>
         <Button
             android:id="@+id/btdel"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="del"/>
+            android:text="del"
+            android:onClick="delMethod"/>
         <Button
             android:id="@+id/btsin"
             android:layout_height="wrap_content"
@@ -72,7 +75,8 @@
             android:id="@+id/btmin"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="-"/>
+            android:text="-"
+            android:onClick="operacjeAdv"/>
         <Button
             android:id="@+id/btcos"
             android:layout_height="wrap_content"
@@ -107,7 +111,8 @@
             android:id="@+id/btplus"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="+"/>
+            android:text="+"
+            android:onClick="operacjeAdv"/>
         <Button
             android:id="@+id/bttan"
             android:layout_height="wrap_content"
@@ -142,7 +147,8 @@
             android:id="@+id/btkrop"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="."/>
+            android:text="."
+            android:onClick="addNumbAdv"/>
         <Button
             android:id="@+id/btx2"
             android:layout_height="wrap_content"
@@ -167,7 +173,8 @@
             android:id="@+id/btrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="=" />
+            android:text="="
+            android:onClick="operacjeAdv"/>
 
         <Button
             android:id="@+id/bt00"
