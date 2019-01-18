@@ -35,7 +35,7 @@ public class advCalc extends AppCompatActivity {
         ekran.setText(this.aktualneStan);
     }
 
-    protected void addNumbAdv(View view){
+    public void addNumbAdv(View view){
         if(aktualneStan == "0"){
             aktualneStan = "";
         }
@@ -43,7 +43,7 @@ public class advCalc extends AppCompatActivity {
         updateScreen();
     }
 
-    protected void singleOprts(View view){
+    public void singleOprts(View view){
         Double actNumb = Double.parseDouble(aktualneStan);
         switch(((Button)view).getText().toString().toLowerCase()){
             case "sin":
@@ -125,16 +125,24 @@ public class advCalc extends AppCompatActivity {
         lastNumb = actNumb;
     }
 
-    protected void clcCalc(){
-        aktualneStan = "0";
+    public void clcCalc(){
         aktualneWynik = 0;
+        aktualneStan = "0";
+        aktDzialanie = dzialania.brak;
+        lastDzialanie = dzialania.brak;
+        actNumb = 0;
+        lastNumb = 0;
     }
     public void delMethod(View v){
-        if(aktualneStan != "0" && aktualneStan.length() >1){
+        if(((Button)v).getText().toString().toLowerCase() =="c"){
+            clcCalc();
+        }
+        else if(aktualneStan != "0" && aktualneStan.length() >1){
             aktualneStan = aktualneStan.substring(0,aktualneStan.length()-1);
         } else {
             clcCalc();
         }
+        updateScreen();
     }
 }
 

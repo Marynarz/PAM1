@@ -22,12 +22,12 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="C"
-            android:onClick="clcCalc"/>
+            android:onClick="delMethod"/>
         <Button
             android:id="@+id/bcdziel"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="\"
+            android:text="/"
             android:onClick="operacjeAdv"/>
         <Button
             android:id="@+id/btmnoz"
